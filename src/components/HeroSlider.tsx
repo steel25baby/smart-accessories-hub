@@ -3,26 +3,26 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const slides = [
   {
-    title: "Wireless Earbuds",
-    subtitle: "Crystal-clear sound, all-day comfort",
+    title: "Affordable Smart Accessories",
+    subtitle: "Oraimo, JBL, Anker & more — built for everyday Kenya.",
     image:
       "https://images.unsplash.com/photo-1606220588913-b3aacb4d2f46?auto=format&fit=crop&w=1200&q=80",
   },
   {
-    title: "Fast Chargers",
-    subtitle: "Power up in minutes, not hours",
+    title: "Quality Gadgets at Kenyan Prices",
+    subtitle: "Fast chargers, cables & power banks from KSh 450.",
     image:
       "https://images.unsplash.com/photo-1591290619762-aafc276a4473?auto=format&fit=crop&w=1200&q=80",
   },
   {
-    title: "Premium Phone Covers",
-    subtitle: "Protection that complements your style",
+    title: "Fast Delivery Across Kenya",
+    subtitle: "Nairobi, Nakuru, Mombasa & beyond — pay on delivery.",
     image:
       "https://images.unsplash.com/photo-1601593346740-925612772716?auto=format&fit=crop&w=1200&q=80",
   },
   {
-    title: "Smartwatches",
-    subtitle: "Your life, on your wrist",
+    title: "Smart Watches for Every Lifestyle",
+    subtitle: "Huawei, Vision Plus & Itel — track, train, thrive.",
     image:
       "https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=1200&q=80",
   },
