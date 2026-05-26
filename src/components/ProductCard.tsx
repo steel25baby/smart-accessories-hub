@@ -1,7 +1,19 @@
 import { ShoppingCart } from "lucide-react";
 import { type Product, formatKsh } from "@/data/products";
+import { useCartStore } from "@/store/cart";
+import { toast } from "sonner";
 
 export function ProductCard({ product }: { product: Product }) {
+  const addItem = useCartStore((s) => s.addItem);
+  const openCart = useCartStore((s) => s.setOpen);
+
+  const handleAdd = () => {
+    addItem(product);
+    toast.success(`${product.name} added to cart`, {
+      action: { label: "View", onClick: () => openCart(true) },
+    });
+  };
+
   return (
     <div className="group flex flex-col overflow-hidden rounded-xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10">
       <div className="aspect-square overflow-hidden bg-secondary">
@@ -25,7 +37,10 @@ export function ProductCard({ product }: { product: Product }) {
         <p className="mt-1 line-clamp-2 text-sm text-muted-foreground">{product.description}</p>
         <div className="mt-4 flex items-center justify-between">
           <span className="text-lg font-bold text-foreground">{formatKsh(product.price)}</span>
-          <button className="inline-flex items-center gap-1.5 rounded-md bg-primary px-3 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90">
+          <button
+            onClick={handleAdd}
+            className="inline-flex items-center gap-1.5 rounded-md bg-primary px-3 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+          >
             <ShoppingCart className="h-4 w-4" /> Add
           </button>
         </div>

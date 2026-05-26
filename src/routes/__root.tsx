@@ -12,6 +12,11 @@ import appCss from "../styles.css?url";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { CartSheet } from "@/components/CartSheet";
+import { SearchBar } from "@/components/SearchBar";
+import { Toaster } from "@/components/ui/sonner";
+import { useEffect } from "react";
+import { useThemeStore } from "@/store/theme";
 
 function NotFoundComponent() {
   return (
@@ -109,6 +114,11 @@ function RootShell({ children }: { children: React.ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var s=localStorage.getItem('smart-on-theme');var t=s?JSON.parse(s).state.theme:'dark';if(t==='dark')document.documentElement.classList.add('dark');}catch(e){document.documentElement.classList.add('dark');}})();`,
+          }}
+        />
       </head>
       <body>
         {children}
@@ -120,6 +130,13 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const theme = useThemeStore((s) => s.theme);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    if (theme === "dark") root.classList.add("dark");
+    else root.classList.remove("dark");
+  }, [theme]);
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -130,6 +147,9 @@ function RootComponent() {
         </main>
         <Footer />
         <WhatsAppButton />
+        <CartSheet />
+        <SearchBar />
+        <Toaster />
       </div>
     </QueryClientProvider>
   );

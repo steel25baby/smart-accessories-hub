@@ -3,6 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ProductCard } from "@/components/ProductCard";
 import { products, categories } from "@/data/products";
 import { Truck } from "lucide-react";
+import { useSearchStore } from "@/store/search";
 
 export const Route = createFileRoute("/shop")({
   component: Shop,
@@ -10,11 +11,20 @@ export const Route = createFileRoute("/shop")({
 
 function Shop() {
   const [active, setActive] = useState<(typeof categories)[number]>("All");
+  const query = useSearchStore((s) => s.query);
 
-  const filtered = useMemo(
-    () => (active === "All" ? products : products.filter((p) => p.category === active)),
-    [active],
-  );
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    return products.filter((p) => {
+      const matchCategory = active === "All" || p.category === active;
+      const matchQuery =
+        !q ||
+        p.name.toLowerCase().includes(q) ||
+        p.brand.toLowerCase().includes(q) ||
+        p.category.toLowerCase().includes(q);
+      return matchCategory && matchQuery;
+    });
+  }, [active, query]);
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
