@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { ShoppingCart, Menu, X, Zap } from "lucide-react";
+import { ShoppingCart, Menu, X, Zap, Search } from "lucide-react";
+import { useCartStore } from "@/store/cart";
+import { useSearchStore } from "@/store/search";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const links = [
   { to: "/", label: "Home" },
@@ -11,6 +14,9 @@ const links = [
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const count = useCartStore((s) => s.items.reduce((n, i) => n + i.quantity, 0));
+  const openCart = useCartStore((s) => s.setOpen);
+  const openSearch = useSearchStore((s) => s.setOpen);
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -39,12 +45,21 @@ export function Navbar() {
 
         <div className="flex items-center gap-2">
           <button
+            aria-label="Search"
+            onClick={() => openSearch(true)}
+            className="grid h-10 w-10 place-items-center rounded-md text-foreground transition-colors hover:bg-secondary"
+          >
+            <Search className="h-5 w-5" />
+          </button>
+          <ThemeToggle />
+          <button
             aria-label="Cart"
+            onClick={() => openCart(true)}
             className="relative grid h-10 w-10 place-items-center rounded-md text-foreground transition-colors hover:bg-secondary"
           >
             <ShoppingCart className="h-5 w-5" />
             <span className="absolute -right-0.5 -top-0.5 grid h-4 w-4 place-items-center rounded-full bg-primary text-[10px] font-semibold text-primary-foreground">
-              0
+              {count}
             </span>
           </button>
           <button
