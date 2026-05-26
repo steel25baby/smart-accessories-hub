@@ -74,11 +74,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Smart On Accessories — Smart Tech for Everyday Life" },
+      {
+        name: "description",
+        content:
+          "Shop premium phone accessories: earbuds, chargers, covers and smartwatches. Power your lifestyle with Smart On.",
+      },
+      { name: "author", content: "Smart On Accessories" },
+      { property: "og:title", content: "Smart On Accessories" },
+      {
+        property: "og:description",
+        content: "Power your lifestyle with smart tech accessories.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
