@@ -1,0 +1,56 @@
+import { useMemo, useState } from "react";
+import { createFileRoute } from "@tanstack/react-router";
+import { ProductCard } from "@/components/ProductCard";
+import { products, categories } from "@/data/products";
+
+export const Route = createFileRoute("/shop")({
+  component: Shop,
+});
+
+function Shop() {
+  const [active, setActive] = useState<(typeof categories)[number]>("All");
+
+  const filtered = useMemo(
+    () => (active === "All" ? products : products.filter((p) => p.category === active)),
+    [active],
+  );
+
+  return (
+    <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+      <header className="text-center">
+        <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+          Shop the <span className="text-primary">Collection</span>
+        </h1>
+        <p className="mt-3 text-muted-foreground">
+          Discover accessories built for performance and style.
+        </p>
+      </header>
+
+      <div className="mt-8 flex flex-wrap justify-center gap-2">
+        {categories.map((c) => (
+          <button
+            key={c}
+            onClick={() => setActive(c)}
+            className={`rounded-full px-4 py-2 text-sm font-medium transition-all ${
+              active === c
+                ? "bg-primary text-primary-foreground shadow shadow-primary/30"
+                : "border border-border text-muted-foreground hover:border-primary/50 hover:text-foreground"
+            }`}
+          >
+            {c}
+          </button>
+        ))}
+      </div>
+
+      <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {filtered.map((p) => (
+          <ProductCard key={p.id} product={p} />
+        ))}
+      </div>
+
+      {filtered.length === 0 && (
+        <p className="mt-12 text-center text-muted-foreground">No products in this category.</p>
+      )}
+    </div>
+  );
+}
