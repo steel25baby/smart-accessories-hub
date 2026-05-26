@@ -17,6 +17,8 @@ import { SearchBar } from "@/components/SearchBar";
 import { Toaster } from "@/components/ui/sonner";
 import { useEffect } from "react";
 import { useThemeStore } from "@/store/theme";
+import { supabase } from "@/integrations/supabase/client";
+import { useAuthStore } from "@/store/auth";
 
 function NotFoundComponent() {
   return (
@@ -131,12 +133,25 @@ function RootShell({ children }: { children: React.ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const theme = useThemeStore((s) => s.theme);
+  const setSession = useAuthStore((s) => s.setSession);
+  const setLoading = useAuthStore((s) => s.setLoading);
 
   useEffect(() => {
     const root = document.documentElement;
     if (theme === "dark") root.classList.add("dark");
     else root.classList.remove("dark");
   }, [theme]);
+
+  useEffect(() => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
+    supabase.auth.getSession().then(({ data }) => {
+      setSession(data.session);
+      setLoading(false);
+    });
+    return () => subscription.unsubscribe();
+  }, [setSession, setLoading]);
 
   return (
     <QueryClientProvider client={queryClient}>
