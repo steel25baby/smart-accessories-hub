@@ -30,9 +30,9 @@ function Contact() {
       <div className="mt-12 grid gap-8 lg:grid-cols-3">
         <aside className="space-y-4 lg:col-span-1">
           {[
-            { Icon: Phone, title: "Phone", text: "+1 (555) 123-4567" },
-            { Icon: Mail, title: "Email", text: "hello@smarton.com" },
-            { Icon: MapPin, title: "Location", text: "San Francisco, CA" },
+            { Icon: Phone, title: "Call / WhatsApp", text: "+254 700 000 000" },
+            { Icon: Mail, title: "Email", text: "hello@smartonke.com" },
+            { Icon: MapPin, title: "Location", text: "Nairobi, Kenya" },
           ].map(({ Icon, title, text }) => (
             <div
               key={title}
