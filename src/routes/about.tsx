@@ -16,8 +16,9 @@ function About() {
           Smart tech for a <span className="text-primary">smarter</span> life
         </h1>
         <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
-          Smart On Accessories crafts premium phone accessories that blend bold design with
-          dependable performance — engineered for the way you actually live.
+          Smart On Accessories is a Kenyan online gadget shop bringing you genuine phone
+          accessories from Oraimo, JBL, Anker, Samsung, Xiaomi and more — at prices that make
+          sense.
         </p>
       </header>
 
@@ -26,16 +27,16 @@ function About() {
           <Target className="h-8 w-8 text-primary" />
           <h2 className="mt-4 text-xl font-semibold text-foreground">Our Mission</h2>
           <p className="mt-2 text-sm text-muted-foreground">
-            To empower people with reliable, affordable tech accessories that elevate everyday
-            moments — without compromising on quality or design.
+            To make quality smart accessories affordable and accessible to every Kenyan — from
+            Nairobi to Mombasa, Kisumu to Eldoret.
           </p>
         </div>
         <div className="rounded-2xl border border-border bg-card p-8">
           <Sparkles className="h-8 w-8 text-primary" />
           <h2 className="mt-4 text-xl font-semibold text-foreground">Our Vision</h2>
           <p className="mt-2 text-sm text-muted-foreground">
-            A world where smart, sustainable accessories are accessible to everyone — built to
-            last, designed to delight.
+            To be Kenya's most trusted online destination for smart, dependable tech
+            accessories — backed by friendly local service.
           </p>
         </div>
       </section>

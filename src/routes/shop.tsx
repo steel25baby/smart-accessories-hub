@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { ProductCard } from "@/components/ProductCard";
 import { products, categories } from "@/data/products";
+import { Truck } from "lucide-react";
 
 export const Route = createFileRoute("/shop")({
   component: Shop,
@@ -22,9 +23,17 @@ function Shop() {
           Shop the <span className="text-primary">Collection</span>
         </h1>
         <p className="mt-3 text-muted-foreground">
-          Discover accessories built for performance and style.
+          Genuine smart accessories at honest Kenyan prices.
         </p>
       </header>
+
+      <div className="mx-auto mt-6 flex max-w-3xl items-center justify-center gap-3 rounded-xl border border-primary/20 bg-primary/5 px-4 py-3 text-center text-sm text-foreground">
+        <Truck className="h-4 w-4 flex-shrink-0 text-primary" />
+        <p>
+          Delivery available in <strong>Nairobi, Nakuru, Mombasa &amp; beyond</strong> · Pay on
+          Delivery · M-Pesa coming soon
+        </p>
+      </div>
 
       <div className="mt-8 flex flex-wrap justify-center gap-2">
         {categories.map((c) => (

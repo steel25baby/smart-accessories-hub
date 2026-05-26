@@ -1,6 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, Phone, MapPin, Zap } from "lucide-react";
 
+const year = new Date().getFullYear();
+
 export function Footer() {
   return (
     <footer className="mt-24 border-t border-border bg-card">
@@ -13,7 +15,7 @@ export function Footer() {
             Smart On
           </div>
           <p className="mt-3 text-sm text-muted-foreground">
-            Power your lifestyle with smart tech accessories built for everyday performance.
+            Affordable smart accessories delivered across Kenya. Pay on delivery available.
           </p>
         </div>
 
@@ -30,25 +32,35 @@ export function Footer() {
         <div>
           <h4 className="text-sm font-semibold text-foreground">Categories</h4>
           <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
-            <li>Earphones</li>
+            <li>Earbuds &amp; Headphones</li>
             <li>Chargers</li>
+            <li>Power Banks</li>
             <li>Covers</li>
-            <li>Smartwatches</li>
+            <li>Smart Watches</li>
           </ul>
         </div>
 
         <div>
           <h4 className="text-sm font-semibold text-foreground">Contact</h4>
           <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
-            <li className="flex items-center gap-2"><Phone className="h-4 w-4 text-primary" /> +1 (555) 123-4567</li>
-            <li className="flex items-center gap-2"><Mail className="h-4 w-4 text-primary" /> hello@smarton.com</li>
-            <li className="flex items-center gap-2"><MapPin className="h-4 w-4 text-primary" /> San Francisco, CA</li>
+            <li className="flex items-center gap-2">
+              <Phone className="h-4 w-4 text-primary" />
+              <span>+254 700 000 000</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <Mail className="h-4 w-4 text-primary" />
+              <span>hello@smartonke.com</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <MapPin className="h-4 w-4 text-primary" />
+              <span>Nairobi, Kenya</span>
+            </li>
           </ul>
         </div>
       </div>
       <div className="border-t border-border">
         <p className="mx-auto max-w-7xl px-4 py-5 text-center text-xs text-muted-foreground sm:px-6 lg:px-8">
-          © {new Date().getFullYear()} Smart On Accessories. All rights reserved.
+          © {year} Smart On Accessories Kenya. All rights reserved.
         </p>
       </div>
     </footer>
